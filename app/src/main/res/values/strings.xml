@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KotlinCleanArchitecture</string>
+    <string name="show_less">Show Less</string>
+    <string name="show_more">Show more</string>
 </resources>

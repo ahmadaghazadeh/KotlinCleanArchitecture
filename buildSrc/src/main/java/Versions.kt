@@ -2,20 +2,23 @@ package dependencies
 
 object Versions {
     val compose= "1.0.5"
+    val build_tools_version= "32.0.0"
+    val activity_compose= "1.3.1"
+    val compose_ui_test_junit4= "1.0.5"
     val lifecycle_viewmode_compose= "2.4.0"
     val navigation_compose= "2.4.0-rc01"
     val material_icons_extended= "2.4.0"
     val hilt_navigation_compose= "1.0.0-rc01"
     val hilt_android= "2.40"
     val hilt_android_compiler= "2.40.5"
-    val hilt_compiler= "2.4.0"
+    val hilt_compiler= "1.0.0"
     val hilt_android_gradle_plugin= "2.40"
     val hilt_lifecycle_viewmodel= "1.0.0-alpha03"
     val gradle = "7.0.4"
-    val compilesdk = 32
+    val compilesdk = 31
     val minsdk = 21
-    val targetsdk = 32
-    val kotlin = "1.6.10"
+    val targetsdk = 31
+    val kotlin = "1.5.31"
     val ktx = "1.7.0"
     val dagger = "2.25.4"
     val nav_components = "2.3.0-alpha06"

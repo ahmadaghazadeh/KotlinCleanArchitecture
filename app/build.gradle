@@ -17,7 +17,6 @@ plugins {
 
 android {
     compileSdk Versions.compilesdk
-
     defaultConfig {
         applicationId Application.id
         minSdk Versions.minsdk
@@ -49,6 +48,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion Versions.compose
     }
+    buildToolsVersion  Versions.build_tools_version
 }
 
 dependencies {
@@ -64,10 +64,12 @@ dependencies {
 
 
     // Compose
-    implementation Compose.lifecycle_viewmode_compose
-    implementation Compose.navigation_compose
+    implementation Compose.ui
+    implementation Compose.activity_compose
+    implementation Compose.ui_tooling
+    implementation Compose.material
     implementation Compose.material_icons_extended
-    implementation Compose.hilt_navigation_compose
+
 
     //Dagger - Hilt
     implementation Dependencies.hilt_android
@@ -85,6 +87,7 @@ dependencies {
     // Room
     implementation Dependencies.room_runtime
     kapt AnnotationProcessing.room_compiler
+    //kapt AnnotationProcessing.room_persistence_compiler
 
     // Kotlin Extensions and Coroutines support for Room
     implementation Dependencies.room_ktx

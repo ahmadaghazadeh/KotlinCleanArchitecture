@@ -23,9 +23,9 @@ constructor(
     }
 
     // Date format: "2019-07-23 HH:mm:ss"
-    fun convertStringDateToFirebaseTimestamp(date: String): Timestamp{
-        return Timestamp(dateFormat.parse(date))
-    }
+//    fun convertStringDateToFirebaseTimestamp(date: String): Timestamp{
+//        return Timestamp(dateFormat.parse(date))
+//    }
 
     // dates format looks like this: "2019-07-23 HH:mm:ss"
     fun getCurrentTimestamp(): String {

@@ -1,6 +1,6 @@
 package com.github.ahmadaghazadeh.kotlincleanarchitecture.business.data.cache.implementation
 
-import javax.inject.Inject
+//import javax.inject.Inject
 
 //@SinceKotlin
 //class WordCacheDataSourceImpl
