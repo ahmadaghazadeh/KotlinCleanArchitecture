@@ -1,7 +1,5 @@
 package com.github.ahmadaghazadeh.kotlincleanarchitecture.business.domain.util
 
-
-
 import com.google.firebase.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*

@@ -44,7 +44,7 @@ object Versions {
     val coroutines_version = "1.5.2"
     val coroutines_play_services = "1.6.0-RC2"
     val lifecycle_version = "2.2.0-alpha03"
-    val retrofit2_version = "2.6.0"
+    val retrofit2_version = "2.9.0"
     val markdown_processor = "0.1.3"
     val junit_jupiter_version = "5.6.0"
     val junit_4_version = "4.12"

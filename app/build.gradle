@@ -33,10 +33,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+
     compileOptions {
         sourceCompatibility Java.java_version
         targetCompatibility Java.java_version
     }
+
     kotlinOptions {
         jvmTarget =Java.java_version
         useIR = true
@@ -49,12 +52,24 @@ android {
         kotlinCompilerExtensionVersion Versions.compose
     }
     buildToolsVersion  Versions.build_tools_version
+    testOptions{
+        unitTests.all{
+            useJunitPlatform()
+        }
+    }
 }
 
 dependencies {
 
     // Kotlin
     implementation Dependencies.ktx
+
+    // Coroutines
+    implementation Dependencies.kotlin_coroutines
+    implementation Dependencies.kotlin_coroutines_android
+    implementation Dependencies.kotlin_coroutines_play_services
+
+
 
     // Support
     implementation SupportDependencies.appcompat
@@ -74,14 +89,8 @@ dependencies {
     //Dagger - Hilt
     implementation Dependencies.hilt_android
     implementation Dependencies.hilt_lifecycle_viewmodel
-
     kapt AnnotationProcessing.hilt_android_compiler
     kapt AnnotationProcessing.hilt_compiler
-
-
-    // Coroutines
-    implementation Dependencies.kotlin_coroutines
-    implementation Dependencies.kotlin_coroutines_android
 
 
     // Room
@@ -92,10 +101,18 @@ dependencies {
     // Kotlin Extensions and Coroutines support for Room
     implementation Dependencies.room_ktx
 
-
+    // Dependencies
     implementation Dependencies.firebase_firestore
     implementation Dependencies.firebase_auth
-    implementation Dependencies.kotlin_coroutines_play_services
     implementation Dependencies.firebase_analytics
     implementation Dependencies.firebase_crashlytics
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofit_gson
+
+    // Unit Tests
+    testImplementation TestDependencies.mockk
+    testImplementation TestDependencies.jupiter_api
+    testImplementation TestDependencies.jupiter_params
+    testImplementation TestDependencies.junit4
+    testRuntimeOnly TestDependencies.jupiter_engine
 }
