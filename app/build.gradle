@@ -1,0 +1,118 @@
+import dependencies.dependencies.*
+import dependencies.Application
+import dependencies.Versions
+import dependencies.AnnotationProcessing
+import dependencies.Java
+import dependencies.dependencies.SupportDependencies
+import dependencies.dependencies.Compose
+
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id "dagger.hilt.android.plugin"
+}
+
+android {
+    compileSdk Versions.compilesdk
+    defaultConfig {
+        applicationId Application.id
+        minSdk Versions.minsdk
+        targetSdk  Versions.targetsdk
+        versionCode Application.version_code
+        versionName Application.version_name
+
+        testInstrumentationRunner AndroidTestDependencies.instrumentation_runner
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    compileOptions {
+        sourceCompatibility Java.java_version
+        targetCompatibility Java.java_version
+    }
+
+    kotlinOptions {
+        jvmTarget =Java.java_version
+        useIR = true
+        allWarningsAsErrors = true
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion Versions.compose
+    }
+    buildToolsVersion  Versions.build_tools_version
+    testOptions{
+        unitTests.all{
+            useJunitPlatform()
+        }
+    }
+}
+
+dependencies {
+
+    // Kotlin
+    implementation Dependencies.ktx
+
+    // Coroutines
+    implementation Dependencies.kotlin_coroutines
+    implementation Dependencies.kotlin_coroutines_android
+    implementation Dependencies.kotlin_coroutines_play_services
+
+
+
+    // Support
+    implementation SupportDependencies.appcompat
+    implementation SupportDependencies.material_design
+    implementation SupportDependencies.constraintlayout //2.1.2
+    implementation SupportDependencies.transition
+
+
+    // Compose
+    implementation Compose.ui
+    implementation Compose.activity_compose
+    implementation Compose.ui_tooling
+    implementation Compose.material
+    implementation Compose.material_icons_extended
+
+
+    //Dagger - Hilt
+    implementation Dependencies.hilt_android
+    implementation Dependencies.hilt_lifecycle_viewmodel
+    kapt AnnotationProcessing.hilt_android_compiler
+    kapt AnnotationProcessing.hilt_compiler
+
+
+    // Room
+    implementation Dependencies.room_runtime
+    kapt AnnotationProcessing.room_compiler
+    //kapt AnnotationProcessing.room_persistence_compiler
+
+    // Kotlin Extensions and Coroutines support for Room
+    implementation Dependencies.room_ktx
+
+    // Dependencies
+    implementation Dependencies.firebase_firestore
+    implementation Dependencies.firebase_auth
+    implementation Dependencies.firebase_analytics
+    implementation Dependencies.firebase_crashlytics
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofit_gson
+
+    // Unit Tests
+    testImplementation TestDependencies.mockk
+    testImplementation TestDependencies.jupiter_api
+    testImplementation TestDependencies.jupiter_params
+    testImplementation TestDependencies.junit4
+    testRuntimeOnly TestDependencies.jupiter_engine
+}
